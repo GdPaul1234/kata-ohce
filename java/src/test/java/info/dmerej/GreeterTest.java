@@ -23,13 +23,13 @@ public class GreeterTest {
   }
 
   @ParameterizedTest
-  @ValueSource(ints = { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23 } )
+  @ValueSource(ints = { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23 })
   void neverAsserts(int hour) {
     // Assert that the assertion in greet() is never thrown, by checking all hours from 0 to 23
     var clock = new BaseClock() {
       @Override
       public int getCurrentHour() {
-        return hour; // midnight
+        return hour;
       }
     };
     var greeter = new Greeter(clock);
