@@ -1,10 +1,14 @@
 package info.dmerej;
 
 public class Greeter {
-  private final SystemClock clock;
+  private final BaseClock clock;
 
   public Greeter() {
     this.clock = new SystemClock();
+  }
+
+  public Greeter(BaseClock clock) {
+    this.clock = clock;
   }
 
   public String greet() {
