@@ -5,20 +5,27 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.fail;
 
 public class OhceTest {
-  @Test
-  void testMainLoop() {
-    /*
-     TODO: check that given the following inputs:
-      - hello
-      - oto
-     - quit
+    @Test
+    void testMainLoop() {
+        List<String> inputs = new ArrayList<>(List.of("hello", "oto", "quit"));
+        var interactor = new BaseInteractor() {
+            private final List<String> output = new ArrayList<>();
 
-    The following messages are shown to the user:
-     - olleh
-     - oto
-     - That was a palindrome!
+            @Override
+            public String readInput() {
+                return inputs.remove(0);
+            }
 
-    */
-    fail("TODO");
-  }
+            @Override
+            public void printMessage(String message) {
+                output.add(message);
+            }
+        };
+        Ohce ohce = new Ohce(interactor);
+
+        ohce.mainLoop();
+
+        var expecteds = List.of("olleh", "oto", "That was a palindrome!");
+        assertEquals(expecteds, interactor.output);
+    }
 }

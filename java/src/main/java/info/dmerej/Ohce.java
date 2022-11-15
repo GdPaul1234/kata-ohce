@@ -1,10 +1,14 @@
 package info.dmerej;
 
 public class Ohce {
-  private final ConsoleInteractor interactor;
+  private final BaseInteractor interactor;
 
   public Ohce() {
     interactor = new ConsoleInteractor();
+  }
+
+  public Ohce(BaseInteractor interactor) {
+    this.interactor = interactor;
   }
 
   public void mainLoop() {
